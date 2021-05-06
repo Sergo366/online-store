@@ -1,0 +1,73 @@
+.products {
+    margin-top: 60px;
+    border-right: 1px solid silver;
+    height: calc(100vh - 60px);
+    padding: 0 35px 0 30px;
+    box-shadow: 1px 5px 20px dimgray;
+    position: fixed;
+    z-index: 5;
+}
+.products_item{
+    text-decoration: none;
+    color: #3e77aa;
+    display: flex;
+    align-items: center;
+}
+
+.products_item p {
+    font-size: 14px;
+    transition: 0.2s;
+    margin: 15px 0 0 0;
+
+}
+.products_item p:hover{
+    text-decoration: underline;
+    color: palevioletred;
+}
+
+.products_item img{
+    height: 20px;
+    margin: 0 7px -8px 0;
+}
+
+.products_item .arrow {
+    height: 10px;
+    position: absolute;
+    right: 0;
+    margin-top: 8px;
+    z-index: 1;
+}
+.dropDown__wrapper {
+    z-index: 50;
+}
+.dropDown {
+    position: absolute;
+    top: 0;
+    left: 240px;
+    right: -450px;
+    z-index: 2;
+    font-size: 14px;
+    padding: 20px 0 0 50px;
+    background-color: white;
+    border: 1px solid silver;
+    border-top: none;
+    height: calc(100vh - 60px);
+    box-shadow: 5px 0 10px dimgray;
+}
+
+
+
+.dropDown a {
+    text-decoration: none;
+    color: #3e77a8;
+    align-items: center;
+}
+
+.dropDown a:hover {
+    text-decoration: underline;
+    color: palevioletred;
+}
+
+.dropDown div {
+    margin: 0 0 7px 0;
+}

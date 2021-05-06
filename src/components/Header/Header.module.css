@@ -1,0 +1,193 @@
+.header {
+    background-color: silver;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    grid-area: h;
+    box-shadow: 1px 1px 20px silver;
+    z-index: 20;
+}
+.header__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+.logo{
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.logo span:first-child {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    text-decoration: none;
+    color: black;
+}
+.logo span:last-child {
+    background-color: green;
+    padding: 5px 10px 5px 5px ;
+    border-radius: 0 5px 5px  0;
+    text-decoration: none;
+    color: white;
+}
+.header__catalog {
+    background-color: silver;
+    border: 1px solid dimgray;
+    padding: 5px 10px;
+    margin: 0 45px  0 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.header__catalog img{
+    height: 25px;
+    position: relative;
+    top: 7px;
+    margin: 0 10px 0 0;
+}
+.header__catalog span{
+    color: black;
+    padding-bottom: 10px;
+}
+.header__catalog:hover {
+    background-color: white;
+}
+
+.header__input {
+    display: inline-block;
+}
+.header__input input{
+    height: 30px;
+    border-radius: 5px 0 0 5px;
+    border: 0;
+    padding-left: 40px;
+    font-size: 16px;
+    width: 400px;
+}
+.header__input img {
+    height: 20px;
+    position: relative;
+    right: -30px;
+    top: 6px;
+    opacity: 0.8;
+}
+
+.header__input button{
+    background-color: green;
+    border: none;
+    padding: 7px;
+    border-radius: 0 5px 5px 0;
+    font-size: 1em;
+    color: #fffff9;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.header__input button:hover {
+    background-color: #00a046;
+}
+.header__menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0 0 -11px 0;
+}
+
+.menu__item img {
+    color: white;
+    height: 30px;
+    margin: 0 25px 0 0;
+    transition: 0.2s;
+    padding: 5px;
+}
+.menu__item img:hover {
+    background-color: white;
+    border-radius: 3px;
+}
+.menu__item img:nth-child(3) {
+    background-color: red;
+    border-radius: 3px;
+}
+
+/*Media header*/
+@media (max-width: 1040px) {
+    .header__input input {
+        max-width: 300px;
+    }
+}
+@media (max-width: 900px) {
+    .header__input input {
+        max-width: 200px;
+    }
+}
+@media (max-width: 800px) {
+    .header__catalog {
+        margin: 0 10px ;
+    }
+    .Header_menu__item img {
+        margin: 0;
+    }
+}
+@media (max-width: 750px) {
+    .header__catalog {
+        position: absolute;
+        top: 60px;
+        left: -10px;
+        border-radius: 0 5px 5px 0;
+    }
+    .logo {
+        display: none;
+    }
+}
+@media (max-width: 530px) {
+
+    .header__input input {
+       height: 40px;
+        max-width: 300px;
+        margin: 0 0 0 -20px;
+   }
+    .header__input img {
+        left: 7px;
+   }
+    .header__input button {
+       padding: 12px 5px;
+   }
+    .header__menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+    }
+}
+@media (max-width: 415px) {
+
+    .header__input input {
+       height: 40px;
+        max-width: calc(90% - 185px);
+   }
+    .header__input button {
+       padding: 12px 5px;
+   }
+}
+@media (max-width: 360px) {
+
+    .header__input input {
+       height: 40px;
+        max-width: 170px;
+   }
+   .header__menu {
+       display: none;
+   }
+}
+@media (max-width: 360px) {
+
+    .header__input input {
+       height: 40px;
+        max-width: 120px;
+   }
+
+}
