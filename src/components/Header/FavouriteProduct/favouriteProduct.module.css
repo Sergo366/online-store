@@ -1,0 +1,51 @@
+.wrapper {
+    position: absolute;
+    top: 65px;
+    right: 135px;
+    min-height: 300px;
+    width: 500px;
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0  1px 10px 5px dimgray;
+}
+
+.content {
+    padding: 20px 10px 40px 20px;
+}
+
+.content__item {
+    padding: 9px 0 7px 0;
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid silver;
+}
+.image img{
+  max-width: 100px;
+}
+
+.describe {
+    max-width: 300px;
+    padding: 0 0 0 20px;
+}
+
+.title {
+    text-transform: capitalize;
+    max-width: 100px;
+}
+.title:hover {
+    text-decoration: underline;
+    color: firebrick;
+}
+
+.price {
+    font-weight: 400;
+    font-family: "Arial Black";
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    z-index: 2;
+}
+
+.defaultText {
+    font-size: 18px;
+}

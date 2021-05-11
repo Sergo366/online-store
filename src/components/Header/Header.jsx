@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import s from './Header.module.css'
 import person from '../../image/header/person-office.svg'
 import basket from '../../image/header/basket.svg'
@@ -8,6 +8,11 @@ import search from '../../image/header/search.svg'
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
+
+    const showFavouriteProduct = () => {
+        props.setState(!props.state)
+    }
+
     return(
         <header className={s.header}>
             <div className={s.header__container}>
@@ -24,11 +29,13 @@ const Header = (props) => {
 
                     <nav className={s.header__nav}>
                         <ul className={s.header__menu}>
-                            <li className={s.li}><a href="#" className={s.menu__item}><img src={person} alt=""/></a></li>
-                            <li><a href="#" className={s.menu__item}><img src={basket} alt=""/></a></li>
-                            <li><a href="#" className={s.menu__item}><img src={favouriteProduct} alt=""/></a></li>
+                            <li><NavLink to="/" className={s.menu__item}><img src={person} alt=""/></NavLink></li>
+                            <li><NavLink to="/" className={s.menu__item}><img src={basket} alt=""/></NavLink></li>
+                            <li><NavLink to="/" className={s.menu__item}><img src={favouriteProduct} onClick={showFavouriteProduct} alt=""/></NavLink></li>
                         </ul>
+
                     </nav>
+
                 </div>
             </div>
         </header>

@@ -1,7 +1,7 @@
 import './App.css';
 import Header from "../Header/Header";
 import NavBarContainer from "../NavBar/NavBar Container";
-import React from "react";
+import React, {useState} from "react";
 import {Route, withRouter} from "react-router-dom";
 import HomePage from "../Products/HomePage";
 import Computers from "../Computers/Computers";
@@ -14,16 +14,38 @@ import Remont from "../Remont/Remont";
 import Health from "../Health/Health";
 import Sport from "../Sport/Sport";
 import Clothes from "../Clothes/Clothes";
+import FavouriteProduct from "../Header/FavouriteProduct/FavouriteProduct";
 
 function App() {
+
+    const [state, setState] = useState(false)
+
+    let idPeople = []
+    if (idPeople) {
+        let data = JSON.parse(localStorage.getItem('idPeople'))
+        data ? idPeople.push(...data) : idPeople = []
+    }
+
+    let addNewFavouriteProduct = (id) => {
+        // console.log(idPeople)
+        if (idPeople.indexOf(id) >= 0 ) {
+            idPeople.splice(idPeople.indexOf(id), 1)
+        } else {
+            idPeople.push(id)
+            }
+        localStorage.clear()
+        localStorage.setItem('idPeople', JSON.stringify(idPeople))
+    }
+
     return (
             <div className='app-container'>
-                <Header/>
+                <Header setState={setState} state={state} />
                 <div className='content'>
                     <NavBarContainer/>
                 </div>
                 <div className='app-wrapper-content'>
-                    <Route path='/' component={HomePage}/>
+                    {state ? <FavouriteProduct />  : null}
+                    <Route path='/' exact render={() => <HomePage addNewFavouriteProduct={addNewFavouriteProduct}/>}/>
                     <Route path='/computers' component={Computers}/>
                     <Route path='/telefony' component={Telephones}/>
                     <Route path='/game' component={Games}/>

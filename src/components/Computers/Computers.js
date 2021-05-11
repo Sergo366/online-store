@@ -3,7 +3,7 @@ import React from "react"
 const Computers = () => {
     return (
         <div>
-            Hello, it's computers component
+            Hello, it's computers Computers
         </div>
     )
 }

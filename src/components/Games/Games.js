@@ -4,7 +4,7 @@ import s from './games.module.css'
 const Games = () => {
     return (
         <div>
-            This is component telephones
+            This is component Games
         </div>
     )
 }

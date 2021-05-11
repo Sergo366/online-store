@@ -4,7 +4,7 @@ import s from './technics.module.css'
 const Technics = () => {
     return (
         <div>
-            This is component telephones
+            This is component Technics
         </div>
     )
 }
