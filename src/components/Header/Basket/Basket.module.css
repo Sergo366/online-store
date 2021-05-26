@@ -1,17 +1,18 @@
 .wrapper {
     position: fixed;
     top: 65px;
-    right: 150px;
+    right: 220px;
     min-height: 500px;
     width: 500px;
     z-index: 11;
     background-color: white;
     box-shadow: 0 1px 10px 5px dimgray;
+    border-radius: 5px;
     padding: 10px 10px 40px 20px;
     box-sizing: border-box;
 }
 
-.favourite__block {
+.basket__block {
     text-align: center;
     letter-spacing: 1px;
     font-size: 20px;
@@ -50,7 +51,7 @@
     bottom: 10px;
     border-radius: 5px;
     color: white;
-    padding: 5px 8px;
+    padding: 7px 35px;
     cursor: pointer;
     transition: 0.2s;
 }
@@ -74,4 +75,25 @@
     font-size: 24px;
     padding-top: 20px;
     text-align: center;
+}
+
+.buy__btn {
+    text-align: center;
+}
+.buy__btn button{
+    border: none;
+    cursor: pointer;
+    background-color: #00a046;
+    color: white;
+    padding: 10px 60px;
+    margin: 30px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.buy__btn button:hover {
+    box-shadow: 1px 5px 20px dimgray;
+    transform: scale(1.05);
 }

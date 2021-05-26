@@ -1,41 +1,49 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import s from './favouriteProduct.module.css'
 import {NavLink} from "react-router-dom";
 import {RandomPrice} from "../../../assets/ProductPage";
 
 
-const FavouriteProduct = () => {
+const FavouriteProduct = ({products, likeProducts, addProductsToBasket}) => {
 
-    const [state, seState] = useState(false)
-
-    let idPeople = JSON.parse(localStorage.getItem('idPeople'))
-    let products = JSON.parse(localStorage.getItem('products'))
-
-    let favouriteProduct = products
-        ? products.map((i) => {
-            for (let j = 0; j < idPeople.length; j++) {
-
-                if (i.id === j) {
-                    return <div key={i.id} className={s.content__item} id={i.id}>
-                        <NavLink to={'/'} className={s.image}><img src={i.url} alt=""/></NavLink>
-                        <div className={s.describe}>
-                            <NavLink to={'/'} className={s.title}><p>{i.title}</p></NavLink>
-                            <div className={s.price}>{RandomPrice()}</div>
-                        </div>
-                    </div>
-                }
-            }
+    console.log()
+    const arrayProducts = []
+    likeProducts.forEach(j => {
+        products.forEach(i => {
+            if (+j === i.id) arrayProducts.push(i)
         })
-        : null
+    })
+
+    const addProductToBasket = (event) => {
+        addProductsToBasket(event.target.id)
+    }
+
+    let favouriteProduct = arrayProducts.map((i) => {
+        return (
+            <div key={i.id} className={s.content__item} id={i.id}>
+                <NavLink to={'/'} className={s.image}><img src={i.url} alt=""/></NavLink>
+                <div className={s.describe}>
+                    <NavLink to={'/'} className={s.title}><p>{i.title}</p></NavLink>
+                    <div className={s.basket__btn}>
+                        <button id={i.id} onClick={addProductToBasket}>Добавить в корзину</button>
+                    </div>
+                    <div className={s.price}>{RandomPrice()}</div>
+                </div>
+            </div>
+        )
+    })
+
 
     return (
         <div className={s.wrapper}>
-            <div className={s.content}>
-                {idPeople
-                    ? favouriteProduct
-                    : <div className={s.defaultText}>У Вас нету понравившихся товаров!</div>
-                }
-            </div>
+            <h3 className={s.favourite__block}>
+                <p>Понравившиеся товары</p>
+            </h3>
+                {favouriteProduct.length === 0
+                    ? <div className={s.defaultText}>У Вас нету понравившихся товаров!</div>
+                    : null }
+
+                {favouriteProduct}
         </div>
     )
 }

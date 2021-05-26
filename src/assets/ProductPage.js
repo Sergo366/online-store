@@ -1,4 +1,4 @@
 
 export const RandomPrice = () => {
-    return Math.round(Math.random() * 10000) + ' ₴'
+    return Math.round(Math.random() * 10000)
 }

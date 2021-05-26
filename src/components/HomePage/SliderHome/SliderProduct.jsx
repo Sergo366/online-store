@@ -7,7 +7,7 @@ const SliderProduct = () => {
 
     const [numbImage, setNumbImage] = useState(0)
 
-    const sliderImage = ['https://content1.rozetka.com.ua/banner_main/image/original/172441121.jpg', 'https://content2.rozetka.com.ua/banner_main/image/original/170801201.jpg', 'https://content1.rozetka.com.ua/banner_main/image/original/173646956.jpg', 'https://content1.rozetka.com.ua/banner_main/image/original/173169256.jpg']
+    const sliderImage = ['https://content1.rozetka.com.ua/banner_main/image/original/172441121.jpg', 'https://content2.rozetka.com.ua/banner_main/image/original/170801201.jpg', 'https://content1.rozetka.com.ua/banner_main/image/original/173169256.jpg']
 
     const handleNextButton = () => {
         if (numbImage <= sliderImage.length - 2) {

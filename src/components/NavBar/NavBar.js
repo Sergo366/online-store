@@ -11,6 +11,7 @@ import shirt from '../../image/navBar/shirt.png'
 import gym from '../../image/navBar/gym.png'
 import cosmetic from '../../image/navBar/cosmetics.png'
 import NavBarItem from "./NavBarItem";
+import {Link} from "react-router-dom";
 
 const NavBar = (props) => {
     return (

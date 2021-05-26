@@ -1,16 +1,21 @@
-import React, {useState} from 'react'
+import React from 'react'
 import s from './Header.module.css'
 import person from '../../image/header/person-office.svg'
 import basket from '../../image/header/basket.svg'
 import favouriteProduct from '../../image/header/favourite-product.png'
 import catalog from '../../image/header/katalog.svg'
 import search from '../../image/header/search.svg'
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const Header = (props) => {
+const Header = ({toggleLikeProducts, showBasketProducts, authorization, logoutUser, showActiveLikeProduct, showActiveBasket}) => {
 
-    const showFavouriteProduct = () => {
-        props.setState(!props.state)
+    const showPopUpFavouriteProducts = () => toggleLikeProducts()
+    const showPopUpBasketProduct = () => showBasketProducts()
+
+    const logout = (event) => {
+        event.preventDefault()
+        logoutUser()
+
     }
 
     return(
@@ -29,13 +34,14 @@ const Header = (props) => {
 
                     <nav className={s.header__nav}>
                         <ul className={s.header__menu}>
-                            <li><NavLink to="/" className={s.menu__item}><img src={person} alt=""/></NavLink></li>
-                            <li><NavLink to="/" className={s.menu__item}><img src={basket} alt=""/></NavLink></li>
-                            <li><NavLink to="/" className={s.menu__item}><img src={favouriteProduct} onClick={showFavouriteProduct} alt=""/></NavLink></li>
+                            <li><Link to={"/myaccount"} className={s.menu__item}><img src={person} alt=""/></Link></li>
+                            <li><Link to="/" className={showActiveBasket ? `${s.menu__item} ${s.active}` : s.menu__item}><img src={basket} alt="" onClick={showPopUpBasketProduct}/></Link></li>
+                            <li><Link to="/" className={showActiveLikeProduct ?`${s.menu__item} ${s.active}` : s.menu__item}><img src={favouriteProduct} onClick={showPopUpFavouriteProducts} alt=""/></Link></li>
                         </ul>
-
                     </nav>
-
+                    <div className={s.register__btn}>
+                        <Link to='/autharization' onClick={authorization ? logout : null}>{authorization ? 'Logout' : 'Login'}</Link>
+                    </div>
                 </div>
             </div>
         </header>
@@ -44,19 +50,19 @@ const Header = (props) => {
 
 const Catalog = () => {
     return (
-        <a href="#" className={s.header__catalog}>
+        <Link href="#" className={s.header__catalog}>
             <img src={catalog} alt=""/>
             <span>Каталог</span>
-        </a>
+        </Link>
     )
 }
 
 export const Logo = () => {
     return (
-        <NavLink to='/' className={s.logo}>
+        <Link to='/' className={s.logo}>
             <span>Shop</span>
             <span>UA</span>
-        </NavLink>
+        </Link>
     )
 }
 

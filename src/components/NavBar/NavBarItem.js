@@ -6,13 +6,11 @@ import {Link, NavLink} from "react-router-dom";
 const NavBarItem = (props) => {
 
     let product = props.popProduct
-
     let mapProduct = product.map((i, index) => {
         return (
             <div key={index}>
                 <NavLink to='/in-process-develop'>{i}</NavLink>
             </div>
-
         )
     })
 
