@@ -8,6 +8,9 @@ const SHOW_LIKE_PRODUCTS = 'SHOW_LIKE_PRODUCTS'
 const SHOW_BASKET_PRODUCTS = 'SHOW_BASKET_PRODUCTS'
 const AUTHORIZATION = 'AUTHORIZATION'
 const LOG_OUT = 'LOG_OUT'
+export const API = 'API'
+export const GET = 'GET'
+
 
 const initialState = {
     products: null,
@@ -69,6 +72,8 @@ const homePageReducer = (state = initialState, action) => {
 
 
 export const setProducts = (data) => ({type: SET_PRODUCTS, data})
+
+
 export const addLikeProducts = (product) => ({type: ADD_LIKE_PRODUCTS, product})
 export const addProductsToBasket = (product) => ({type: ADD_PRODUCTS_TO_BASKET, product})
 export const showLikeProducts = () => ({type: SHOW_LIKE_PRODUCTS})
@@ -77,10 +82,29 @@ export const setAuthorization = () => ({type: AUTHORIZATION})
 export const logoutUser = () => ({type: LOG_OUT})
 
 
-export const getProducts = () => async (dispatch) => {
-    // let response = await getPhotos().then(response => response)
-    // dispatch(setProducts(response))
-}
+export const getProducts = () => {
+    const url = '/albums/1/photos'
 
+    return {
+        type: API,
+        payload: {
+            endpoint: url,
+            method: GET,
+            body: null,
+            isAuthorizeUser: false,
+            onSuccess: (data, dispatch) => {
+                console.log('Success')
+                dispatch(setProducts(data))
+                return {data};
+            },
+            onFailure: (errors) => {
+                if (!errors) console.error('Unknown error, please go home')
+                else console.log(errors)
+
+                return {errors}
+            }
+        }
+    }
+}
 
 export default homePageReducer
