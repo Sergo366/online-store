@@ -11,21 +11,20 @@ import shirt from '../../image/navBar/shirt.png'
 import gym from '../../image/navBar/gym.png'
 import cosmetic from '../../image/navBar/cosmetics.png'
 import NavBarItem from "./NavBarItem";
-import {Link} from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = () => {
     return (
         <div className={s.products}>
-            <NavBarItem text={'Ноутбуки и компьютеры'} img={tv} popProduct={props.server.laptop} pathLink='/computers'/>
-            <NavBarItem text={'Смартфоны, ТВ и техника'} img={phone} popProduct={props.server.phone} pathLink='/telefony'/>
-            <NavBarItem text={'Товары для геймеров'} img={game} popProduct={props.server.gamePlay} pathLink='/game'/>
-            <NavBarItem text={'Бытовая техника'} img={technic} popProduct={props.server.technic} pathLink='/bt'/>
-            <NavBarItem text={'Товары для дома'} img={house} popProduct={props.server.house} pathLink='/tovary-dlya-doma'/>
-            <NavBarItem text={'Инструменты и автотовары'} img={inst} popProduct={props.server.inst} pathLink='/instrumenty-i-avtotovary'/>
-            <NavBarItem text={'Сантехника и ремонт'} img={toilet} popProduct={props.server.toilet} pathLink='/santekhnika-i-remont'/>
-            <NavBarItem text={'Красота и здоровье'} img={cosmetic} popProduct={props.server.cosmetic} pathLink='/krasota-i-zdorovje'/>
-            <NavBarItem text={'Спорт и увлечения'} img={gym} popProduct={props.server.sport} pathLink='/sport-i-uvlecheniya'/>
-            <NavBarItem text={'Одежда'} img={shirt} popProduct={props.server.clothes} pathLink='/shoes_clothes'/>
+            <NavBarItem text={'Ноутбуки и компьютеры'} img={tv} pathLink='/computers'/>
+            <NavBarItem text={'Смартфоны, ТВ и техника'} img={phone} pathLink='/telefony'/>
+            <NavBarItem text={'Товары для геймеров'} img={game} pathLink='/game'/>
+            <NavBarItem text={'Бытовая техника'} img={technic} pathLink='/bt'/>
+            <NavBarItem text={'Товары для дома'} img={house} pathLink='/tovary-dlya-doma'/>
+            <NavBarItem text={'Инструменты и автотовары'} img={inst} pathLink='/instrumenty-i-avtotovary'/>
+            <NavBarItem text={'Сантехника и ремонт'} img={toilet} pathLink='/santekhnika-i-remont'/>
+            <NavBarItem text={'Красота и здоровье'} img={cosmetic} pathLink='/krasota-i-zdorovje'/>
+            <NavBarItem text={'Спорт и увлечения'} img={gym}  pathLink='/sport-i-uvlecheniya'/>
+            <NavBarItem text={'Одежда'} img={shirt} pathLink='/shoes_clothes'/>
         </div>
     )
 }
