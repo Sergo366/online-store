@@ -11,11 +11,11 @@ const MyAccountContainer = (props) => {
     )
 }
 
-const mapState = (state) => {
+const mapDispatch = (dispatch) => {
     return {
 
     }
 }
 
 
-export default connect(mapState, null)(MyAccountContainer)
+export default connect(null, mapDispatch)(MyAccountContainer)

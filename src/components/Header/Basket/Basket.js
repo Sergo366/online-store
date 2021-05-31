@@ -3,7 +3,7 @@ import s from './Basket.module.css'
 import {NavLink} from "react-router-dom";
 import {RandomPrice} from "../../../assets/ProductPage";
 
-const Basket = ({basketProducts, products}) => {
+const Basket = ({basketProducts, products, closeBasket}) => {
 
 
     const arrayProducts = []
@@ -29,24 +29,26 @@ const Basket = ({basketProducts, products}) => {
     })
 
 
-    const click = (event) => {
-        console.log(event.target.child)
-    }
+
+
 
     return (
-        <div className={s.wrapper} onClick={click}>
-            <h3 className={s.basket__block}>
-                Корзина
-            </h3>
-            <div className={s.content}>
-                {basketProd}
-                {basketProd.length === 0 ? <div className={s.defaultText}>Недобавленно ни одного товара!</div> : null}
+        <div className={s.background__wrapper} onClick={closeBasket}>
+            <div className={s.wrapper} onClick={(e) => e.stopPropagation()}>
+                <h3 className={s.basket__block}>
+                    Корзина
+                </h3>
+                <div className={s.content}>
+                    {basketProd}
+                    {basketProd.length === 0 ? <div className={s.defaultText}>Недобавленно ни одного товара!</div> : null}
+                </div>
+                <div className={s.buy__btn}>
+                    <button>Оплатить все товары</button>
+                </div>
+                <a href=""></a>
             </div>
-            <div className={s.buy__btn}>
-                <button>Оплатить все товары</button>
-            </div>
-
         </div>
+
     )
 }
 

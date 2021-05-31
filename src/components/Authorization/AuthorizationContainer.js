@@ -1,29 +1,21 @@
 import React from "react"
 import Authorization from "./Authorization";
 import {connect} from "react-redux";
-import {setAuthorization} from "../../Redux/homePageReducer";
+import {getDataFromServer, setAuthorization} from "../../Redux/homePageReducer";
 
 
-const AuthorizationContainer = (props) => {
+const AuthorizationContainer = ({getDataFromServer, serverData, authorizationUser}) => {
 
     return (
-        <Authorization authorizationUser={props.authorizationUser}/>
+        <Authorization authorizationUser={authorizationUser} getDataFromServer={getDataFromServer}/>
     )
 }
 
-
-const mapStateToProps = (state) => {
+const mapState = (state) => {
     return {
-
+        serverData: state.homePage.serverData
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        authorizationUser: () => {
-            dispatch(setAuthorization())
-        },
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationContainer)
+export default connect(mapState, {authorizationUser: setAuthorization, getDataFromServer})(AuthorizationContainer)

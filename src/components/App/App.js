@@ -24,25 +24,18 @@ import AuthorizationContainer from "../Authorization/AuthorizationContainer";
 
 function App(props) {
 
-    const click = (event) => {
-        console.log(event.target)
-    }
-
     return (
-        <div className='app-container' onClick={click}>
+        <div className='app-container'>
             <HeaderContainer />
             <div className='content'>
                 <NavBarContainer/>
             </div>
             <div className='app-wrapper-content'>
-                {props.stateShowLikeProduct && <FavouriteProductContainer/> }
-                {props.stateShowBasketProduct && <BasketContainer/> }
                 <Route path='/' exact component={HomePageContainer}/>
                 <Route path={'/myaccount'} >
                     {props.isAuthorizeUser ? <MyAccountContainer/> : <Redirect to="/autharization" />}
                 </Route>
                 <Route path={'/autharization'} component={AuthorizationContainer}/>
-
                 <Route path='/computers' component={Computers}/>
                 <Route path='/telefony' component={Telephones}/>
                 <Route path='/game' component={Games}/>
@@ -61,20 +54,10 @@ function App(props) {
 
 const mapStateToProps = (state) => {
     return {
-        stateShowLikeProduct: state.homePage.showLikeProduct,
-        stateShowBasketProduct: state.homePage.showBasketProduct,
         isAuthorizeUser: state.homePage.isAuthorizeUser
-
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        showBasketProducts: () => {
-            dispatch(showBasketProducts())
-        }
-    }
-}
 
 const AppWithRouter = withRouter(App)
-export default connect(mapStateToProps, mapDispatchToProps)(AppWithRouter)
+export default connect(mapStateToProps, {showBasketProducts})(AppWithRouter)

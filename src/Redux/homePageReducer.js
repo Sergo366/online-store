@@ -1,5 +1,4 @@
-import {getPhotos} from "../axios/axios";
-import myMiddleware from "../custom-middleware/myMiddleware";
+import {getData, getPhotos, postData} from "../axios/axios";
 
 const SET_PRODUCTS = 'SET_PRODUCTS'
 const ADD_LIKE_PRODUCTS = 'ADD_PRODUCTS'
@@ -8,8 +7,8 @@ const SHOW_LIKE_PRODUCTS = 'SHOW_LIKE_PRODUCTS'
 const SHOW_BASKET_PRODUCTS = 'SHOW_BASKET_PRODUCTS'
 const AUTHORIZATION = 'AUTHORIZATION'
 const LOG_OUT = 'LOG_OUT'
-export const API = 'API'
-export const GET = 'GET'
+
+const GET_DATA_FROM_SERVER = 'GET_DATA_FROM_SERVER'
 
 
 const initialState = {
@@ -18,7 +17,8 @@ const initialState = {
     basketProducts: [],
     showLikeProduct: false,
     showBasketProduct: false,
-    isAuthorizeUser: false
+    isAuthorizeUser: false,
+    serverData: null
 
 }
 
@@ -65,15 +65,18 @@ const homePageReducer = (state = initialState, action) => {
                 ...state,
                 isAuthorizeUser: false
             }
+        case GET_DATA_FROM_SERVER:
+            return {
+                ...state,
+                serverData: action.data
+            }
         default:
             return state;
     }
 }
-
+export default homePageReducer
 
 export const setProducts = (data) => ({type: SET_PRODUCTS, data})
-
-
 export const addLikeProducts = (product) => ({type: ADD_LIKE_PRODUCTS, product})
 export const addProductsToBasket = (product) => ({type: ADD_PRODUCTS_TO_BASKET, product})
 export const showLikeProducts = () => ({type: SHOW_LIKE_PRODUCTS})
@@ -82,29 +85,17 @@ export const setAuthorization = () => ({type: AUTHORIZATION})
 export const logoutUser = () => ({type: LOG_OUT})
 
 
-export const getProducts = () => {
-    const url = '/albums/1/photos'
+export const getServerData = (data) => ({type: GET_DATA_FROM_SERVER, data})
 
-    return {
-        type: API,
-        payload: {
-            endpoint: url,
-            method: GET,
-            body: null,
-            isAuthorizeUser: false,
-            onSuccess: (data, dispatch) => {
-                console.log('Success')
-                dispatch(setProducts(data))
-                return {data};
-            },
-            onFailure: (errors) => {
-                if (!errors) console.error('Unknown error, please go home')
-                else console.log(errors)
 
-                return {errors}
-            }
-        }
-    }
+export const getProducts = () => async (dispatch) => {
+    let response = await getPhotos().then(resp => resp)
+    dispatch(setProducts(response))
 }
 
-export default homePageReducer
+export const getDataFromServer = (objectData) => async (dispatch) => {
+    console.log(objectData)
+    let response = await postData(objectData).then(resp => resp)
+    console.log(response)
+    dispatch(getServerData(response))
+}

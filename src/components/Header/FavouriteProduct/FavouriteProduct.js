@@ -4,10 +4,10 @@ import {NavLink} from "react-router-dom";
 import {RandomPrice} from "../../../assets/ProductPage";
 
 
-const FavouriteProduct = ({products, likeProducts, addProductsToBasket}) => {
+const FavouriteProduct = ({products, likeProducts, addProductsToBasket, closeLikeProducts}) => {
 
-    console.log()
     const arrayProducts = []
+
     likeProducts.forEach(j => {
         products.forEach(i => {
             if (+j === i.id) arrayProducts.push(i)
@@ -33,18 +33,26 @@ const FavouriteProduct = ({products, likeProducts, addProductsToBasket}) => {
         )
     })
 
+    const click = (event) => {
+        console.log(event.target)
+        closeLikeProducts()
+    }
+
+
 
     return (
-        <div className={s.wrapper}>
-            <h3 className={s.favourite__block}>
-                <p>Понравившиеся товары</p>
-            </h3>
+        <div className={s.background__wrapper} onClick={click}>
+            <div className={s.wrapper} onClick={(e) => e.stopPropagation()}>
+                <h3 className={s.favourite__block}>
+                    <p>Понравившиеся товары</p>
+                </h3>
                 {favouriteProduct.length === 0
                     ? <div className={s.defaultText}>У Вас нету понравившихся товаров!</div>
-                    : null }
-
+                    : null}
                 {favouriteProduct}
+            </div>
         </div>
+
     )
 }
 

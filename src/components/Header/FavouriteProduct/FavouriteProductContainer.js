@@ -1,12 +1,12 @@
 import FavouriteProduct from "./FavouriteProduct";
 import {connect} from "react-redux";
-import {addProductsToBasket} from "../../../Redux/homePageReducer";
+import {addProductsToBasket, showLikeProducts} from "../../../Redux/homePageReducer";
 
 
 const FavouriteProductContainer = (props) => {
 
     return (
-        <FavouriteProduct products={props.products} likeProducts={props.likeProducts} addProductsToBasket={props.addProductsToBasket}/>
+        <FavouriteProduct products={props.products} likeProducts={props.likeProducts} addProductsToBasket={props.addProductsToBasket} closeLikeProducts={props.closeLikeProducts}/>
     )
 }
 
@@ -23,7 +23,9 @@ const mapDispatchToProps = (dispatch) => {
         addProductsToBasket: (idProduct) => {
             dispatch(addProductsToBasket(idProduct))
         },
-
+        closeLikeProducts: () => {
+            dispatch(showLikeProducts())
+        }
     }
 }
 
