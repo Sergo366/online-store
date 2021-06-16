@@ -4,7 +4,10 @@ import {connect} from "react-redux";
 import {getDataFromServer, setAuthorization} from "../../Redux/homePageReducer";
 
 
+
 const AuthorizationContainer = ({getDataFromServer, serverData, authorizationUser}) => {
+
+
 
     return (
         <Authorization authorizationUser={authorizationUser} getDataFromServer={getDataFromServer}/>

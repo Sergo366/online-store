@@ -1,30 +1,37 @@
-import React, {useEffect, useState} from "react";
+import React, {FC, MouseEventHandler, useEffect} from "react";
 import SliderProduct from "./SliderHome/SliderProduct";
 import s from './homePage.module.css'
 import {RandomPrice} from '../../assets/ProductPage'
 import {NavLink} from "react-router-dom";
 import heartEmpty from "../../image/homePage/heart-empty.svg";
 import heartFull from "../../image/homePage/heart-full.svg";
-import {getProducts} from "../../Redux/homePageReducer";
+import {productsType} from "../../types/types homePageReducer";
 
-const HomePage = ({ addProducts, products, addNewLikeProducts }) => {
+type PropsTypes = {
+    addProducts: Function
+    products: productsType[]
+    addNewLikeProducts: Function
+}
 
-    const likeProduct = (event) => {
+ const HomePage:FC<PropsTypes> = ({ addProducts, products, addNewLikeProducts }) => {
+
+    useEffect(() => {
+        addProducts()
+    }, [addProducts])
+
+
+    const likeProduct = (event: any) => {
         if (event.target.src === 'http://localhost:3000/static/media/heart-full.66089a9f.svg') event.target.src = heartEmpty
         else event.target.src = heartFull
     }
 
-    useEffect(() => {
-        console.log(addProducts)
-        addProducts()
-    }, [addProducts])
 
-    const changeHeartPicture = (event) => {
+    const changeHeartPicture = (event: any) => {
         addNewLikeProducts(event.target.id)
     }
 
-    let mapArrayState = products ? products.map(i => {
-            return <div key={i.id} className={s.content__item} id={i.id}>
+    let mapArrayState = products && products.map(i => {
+            return <div key={i.id} className={s.content__item} id={String(i.id)}>
                 <NavLink to={'/'} className={s.image}>
                     <img src={i.url} />
                 </NavLink>
@@ -36,13 +43,11 @@ const HomePage = ({ addProducts, products, addNewLikeProducts }) => {
                         {RandomPrice()}
                     </div>
                     <div className={s.heart} onClick={changeHeartPicture}>
-                        <img src={heartEmpty} onClick={likeProduct} id={i.id}/>
+                        <img src={heartEmpty} onClick={likeProduct} id={String(i.id)}/>
                     </div>
                 </div>
             </div>
         })
-        : null
-
 
     return (
         <div>
@@ -50,7 +55,7 @@ const HomePage = ({ addProducts, products, addNewLikeProducts }) => {
                 <SliderProduct/>
             </div>
             <div className={s.container__content}>
-                {products ? mapArrayState : null}
+                { products && mapArrayState }
             </div>
         </div>
     )

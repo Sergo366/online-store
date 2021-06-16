@@ -1,6 +1,6 @@
 import React from "react"
 import s from './Authorization.module.css'
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 
 const Authorization = ({authorizationUser, getDataFromServer}) => {
@@ -15,35 +15,31 @@ const Authorization = ({authorizationUser, getDataFromServer}) => {
         const nodes = event.target.childNodes
         for (let i = 0; i < nodes.length - 1; i++) {
             if (!nodes[i].lastChild.value) return
-
             dataForms[nodes[i].lastChild.name] = nodes[i].lastChild.value
         }
         getDataFromServer(dataForms)
 
-
-        // getDataFromServer()
-
-        // authorizationUser(true)
-        // setTimeout(() => {
-        //     history.push("/myaccount")
-        // }, 1000)
-
     }
 
-    return(
+    return (
         <div className={s.wrapper}>
             <div className={s.container}>
-                <form action="" onSubmit={authorization} >
+                <form action="" onSubmit={authorization}>
                     <div className={s.login}>
                         <p>Эл. почта или телефон</p>
-                        <input type="text" name='login'/>
+                        <input type="text" name='username'/>
                     </div>
                     <div className={s.password}>
                         <p>Пароль</p>
                         <input type="password" name='password'/>
                     </div>
-                    <div className={s.enter}>
-                        <button type='submit'>Войти</button>
+                    <div className={s.row__button}>
+                        <div className={s.enter}>
+                            <button type='submit'>Войти</button>
+                        </div>
+                        <div className={s.enter}>
+                            <button type='submit'>Зарегистрироваться</button>
+                        </div>
                     </div>
                 </form>
             </div>

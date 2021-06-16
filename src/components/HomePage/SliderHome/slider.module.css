@@ -5,11 +5,15 @@
     align-items: center;
     justify-content: center;
 }
-.container img {
-    max-width: 100%;
-}
 
 .container__next img, .container__prev img{
     height: 50px;
     cursor: pointer;
+}
+
+.container__image{
+    max-width: 1200px;
+}
+.container__image img{
+    max-width: 100%;
 }

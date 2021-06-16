@@ -61,8 +61,7 @@
     ]
   },
   "devDependencies": {
-    "@material-ui/core": "^4.11.3",
-    "concurrently": "^6.2.0",
+    "@types/react-router-dom": "^5.1.7",
     "redux-thunk": "^2.3.0"
   }
 }

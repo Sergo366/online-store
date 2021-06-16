@@ -5,19 +5,8 @@ import {addLikeProducts, getProducts} from "../../Redux/homePageReducer";
 
 const HomePageContainer = (props) => {
 
-
-    // useEffect(() => {
-    //     getPhotos().then(r => {
-    //         if (!state) {
-    //             setState(r)
-    //         }
-    //     })
-    // })
-
     return (
-        <HomePage addProducts={props.addProducts} products={props.products} addNewLikeProducts={props.addNewLikeProducts}
-
-                />
+        <HomePage addProducts={props.addProducts} products={props.products} addNewLikeProducts={props.addNewLikeProducts}/>
     )
 }
 

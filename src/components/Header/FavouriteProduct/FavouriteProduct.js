@@ -34,7 +34,6 @@ const FavouriteProduct = ({products, likeProducts, addProductsToBasket, closeLik
     })
 
     const click = (event) => {
-        console.log(event.target)
         closeLikeProducts()
     }
 

@@ -6,7 +6,6 @@ import {logoutUser, showBasketProducts, showLikeProducts} from "../../Redux/home
 const HeaderContainer = (props) => {
     let activeIconMyAccount = window.location.pathname === '/myaccount'
 
-
     return (
         <div>
             <Header toggleLikeProducts={props.toggleLikeProducts} showBasketProducts={props.showBasketProducts} authorization={props.authorization}

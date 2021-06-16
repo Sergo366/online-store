@@ -7,11 +7,16 @@ import Navigation from "./Navigation/Navigation";
 import FavouriteProductContainer from "./FavouriteProduct/FavouriteProductContainer";
 import BasketContainer from "./Basket/BasketContainer";
 
+
 const Header = (props) => {
 
     const logout = (event) => {
         event.preventDefault()
         props.logoutUser()
+    }
+
+    const auth = (event) => {
+        event.preventDefault()
     }
 
 
@@ -40,7 +45,7 @@ const Header = (props) => {
                                     activeIconMyAccount={props.activeIconMyAccount}
                         />
 
-                        <div className={s.register__btn}>
+                        <div className={s.register__btn} onClick={auth}>
                             <Link to='/autharization'
                                   onClick={props.authorization ? logout : null}>{props.authorization ? 'Logout' : 'Login'}</Link>
                         </div>
@@ -56,7 +61,7 @@ export default Header
 
 const Catalog = () => {
     return (
-        <Link href="#" className={s.header__catalog}>
+        <Link to='/' className={s.header__catalog}>
             <img src={catalog} alt=""/>
             <span>Каталог</span>
         </Link>
