@@ -1,37 +1,24 @@
 import React from "react"
 import s from './Authorization.module.css'
-import {useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom"
+import {Field, reduxForm} from 'redux-form'
 
 
-const Authorization = ({authorizationUser, getDataFromServer}) => {
+const Authorization = ({ handleSubmit }) => {
 
     let history = useHistory()
-
-    const authorization = (event) => {
-        event.preventDefault()
-
-        const dataForms = {}
-
-        const nodes = event.target.childNodes
-        for (let i = 0; i < nodes.length - 1; i++) {
-            if (!nodes[i].lastChild.value) return
-            dataForms[nodes[i].lastChild.name] = nodes[i].lastChild.value
-        }
-        getDataFromServer(dataForms)
-
-    }
 
     return (
         <div className={s.wrapper}>
             <div className={s.container}>
-                <form action="" onSubmit={authorization}>
+                <form onSubmit={handleSubmit}>
                     <div className={s.login}>
-                        <p>Эл. почта или телефон</p>
-                        <input type="text" name='username'/>
+                        <label htmlFor='username'>Эл. почта или телефон</label>
+                        <Field component='input' type="text" name='username'/>
                     </div>
                     <div className={s.password}>
-                        <p>Пароль</p>
-                        <input type="password" name='password'/>
+                        <label htmlFor='password'>Пароль</label>
+                        <Field component='input' type="password" name='password'/>
                     </div>
                     <div className={s.row__button}>
                         <div className={s.enter}>
@@ -47,4 +34,6 @@ const Authorization = ({authorizationUser, getDataFromServer}) => {
     )
 }
 
-export default Authorization
+export default reduxForm({
+    form: 'registration'
+})(Authorization)

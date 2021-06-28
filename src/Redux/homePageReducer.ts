@@ -98,9 +98,15 @@ export const getProducts: Function = () => async (dispatch: Function) => {
     dispatch(setProducts(response))
 }
 
-export const getDataFromServer: Function = (objectData: registrationDataType, button: string) => async (dispatch: Function) => {
-    let response = await registration(objectData)
-    console.log(response)
+export const getDataFromServer: Function = (objectData: registrationDataType) => async (dispatch: Function) => {
+
+    try {
+        let response = await registration(objectData)
+        console.log('resp',response)
+    } catch (e) {
+        console.log('error', e)
+    }
+
     // dispatch(setAuthorization())
 
 }

@@ -7,10 +7,13 @@ import {getDataFromServer, setAuthorization} from "../../Redux/homePageReducer";
 
 const AuthorizationContainer = ({getDataFromServer, serverData, authorizationUser}) => {
 
-
+    const getData = (data) => {
+        console.log(data)
+        getDataFromServer(data)
+    }
 
     return (
-        <Authorization authorizationUser={authorizationUser} getDataFromServer={getDataFromServer}/>
+        <Authorization authorizationUser={authorizationUser}  onSubmit={getData}/>
     )
 }
 

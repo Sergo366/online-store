@@ -1,6 +1,5 @@
 import {registrationDataType} from "../types/types homePageReducer";
-
-const axios = require('axios')
+import axios from'axios'
 
 export const getPhotos = async () => {
     try {
@@ -14,19 +13,17 @@ export const getPhotos = async () => {
 
 export const registration = async (data: registrationDataType) => {
     const JsonData = JSON.stringify(data)
-    let response
-
-    try {
-        response = await axios.post('http://localhost:5000/registration', JsonData, {
-            headers: {
-                'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin": "*",
-            }
-        })
-        return response
-    } catch (e) {
-        console.log('error', e)
-    }
-
-
+    let response = await axios.post('http://localhost:5000/registration', {
+        "username": data.username,
+        "password": data.password
+    })
+    console.log('ressss',response)
+    return response
 }
+
+// {
+//     headers: {
+//         'Content-Type': 'application/json',
+//             "Access-Control-Allow-Origin": "*",
+//     }
+//}
